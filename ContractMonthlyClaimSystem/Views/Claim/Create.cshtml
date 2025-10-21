@@ -1,0 +1,32 @@
+﻿@model ContractMonthlyClaimSystem.ViewModels.ClaimCreateVm
+@{
+	ViewData["Title"] = "Submit Claim";
+}
+<div class="card shadow p-4" style="max-width:680px;margin:auto">
+	<h2 class="mb-3">Submit a Claim</h2>
+	<form asp-action="Create" method="post" enctype="multipart/form-data">
+		<div class="mb-3">
+			<label asp-for="HoursWorked" class="form-label"></label>
+			<input asp-for="HoursWorked" class="form-control" />
+			<span asp-validation-for="HoursWorked" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="HourlyRate" class="form-label"></label>
+			<input asp-for="HourlyRate" class="form-control" />
+			<span asp-validation-for="HourlyRate" class="text-danger"></span>
+		</div>
+		<div class="mb-3">
+			<label asp-for="Notes" class="form-label">Notes</label>
+<textarea asp-for="Notes" class="form-control" rows="3"></textarea>
+		</div>
+		<div class="mb-3">
+			<label class="form-label">Supporting Document (PDF/DOCX/XLSX, max 10MB)</label>
+			<input type="file" name="upload" class="form-control" accept=".pdf,.docx,.xlsx" />
+			<span class="text-danger">@Html.ValidationMessage("upload")</span>
+		</div>
+		<button class="btn btn-primary btn-lg w-100" type="submit">Submit</button>
+	</form>
+</div>
+@section Scripts {
+	<partial name="_ValidationScriptsPartial" />
+}

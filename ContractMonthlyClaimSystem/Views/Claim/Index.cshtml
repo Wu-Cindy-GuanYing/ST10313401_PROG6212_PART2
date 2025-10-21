@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ContractMonthlyClaimSystem.Models.Claim>
+<h2>Claims</h2>
+@if (TempData["Message"] is string m)
+{
+	<div class="alert alert-success">@m</div>
+}
+<table class="table table-striped">
+	<thead><tr><th>ID</th><th>Lecturer</th><th>Total</th><th>Status</th><th>Docs</th><th></th></tr></thead>
+	<tbody>
+		@foreach (var c in Model)
+		{
+			var badge = c.Status == ContractMonthlyClaimSystem.Models.ClaimStatus.Rejected ? "bg-danger" : c.Status.ToString().StartsWith("Approved") ? "bg-success" : "bg-secondary";
+			<tr>
+				<td>@c.Id</td>
+				<td>@c.LecturerName</td>
+				<td>@(c.TotalAmount.ToString("C"))</td>
+				<td><span class="badge @badge">@c.Status</span></td>
+				<td>
+					@if (c.Documents.Any())
+					{
+						foreach (var d in c.Documents)
+						{
+							<a class="btn btn-sm btn-outline-secondary me-1" href="@d.FilePath" target="_blank">@d.FileName</a>
+						}
+					}
+					else
+					{
+
+						<span class="text-muted">None</span>
+					}
+				</td>
+				<td><a asp-action="Details" asp-route-id="@c.Id" class="btn btn-sm btn-outline-primary">Details</a></td>
+			</tr>
+		}
+	</tbody>
+</table>

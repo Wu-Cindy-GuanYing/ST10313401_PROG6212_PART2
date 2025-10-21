@@ -1,0 +1,38 @@
+﻿@model IEnumerable<ContractMonthlyClaimSystem.Models.Claim>
+<h2>Pending Claims</h2>
+@if (TempData["Message"] is string m)
+{
+	<div class="alert alert-info">@m</div>
+}
+@if (!Model.Any())
+{
+	<div class="alert alert-success">No pending claims.</div>
+}
+@foreach (var c in Model)
+{
+	<div class="card mb-3">
+		<div class="card-body d-flex justify-content-between align-items-start">
+			<div>
+				<h5>Claim #@c.Id — @c.LecturerName</h5>
+				<div><strong>Total:</strong> @(c.TotalAmount.ToString("C")) &nbsp; <strong>Hours:</strong> @c.TotalHours</div>
+				<div class="mt-2">
+					@foreach (var d in c.Documents)
+					{
+						<a class="btn btn-sm btn-outline-secondary me-2" href="@d.FilePath" target="_blank">@d.FileName</a>
+					}
+				</div>
+			</div>
+			<div>
+				<form asp-action="Approve" method="post" class="d-inline">
+					<input type="hidden" name="id" value="@c.Id" />
+					<button class="btn btn-success">Approve</button>
+				</form>
+				<form asp-action="Reject" method="post" class="d-inline ms-2">
+					<input type="hidden" name="id" value="@c.Id" />
+					<input name="reason" type="hidden" value="Not specified" />
+					<button class="btn btn-danger">Reject</button>
+				</form>
+			</div>
+		</div>
+	</div>
+}
