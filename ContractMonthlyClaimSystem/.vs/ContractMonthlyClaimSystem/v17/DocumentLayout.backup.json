@@ -77,10 +77,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1F874615-64F2-4515-843E-C53340697B6B}|ContractMonthlyClaimSystem.csproj|c:\\users\\lab_services_student\\desktop\\st10313401_prog6212_part2\\contractmonthlyclaimsystem\\contractmonthlyclaimsystem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{1F874615-64F2-4515-843E-C53340697B6B}|ContractMonthlyClaimSystem.csproj|solutionrelative:contractmonthlyclaimsystem.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1F874615-64F2-4515-843E-C53340697B6B}|ContractMonthlyClaimSystem.csproj|c:\\users\\lab_services_student\\desktop\\st10313401_prog6212_part2\\contractmonthlyclaimsystem\\migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1F874615-64F2-4515-843E-C53340697B6B}|ContractMonthlyClaimSystem.csproj|solutionrelative:migrations\\appdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -333,18 +329,6 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2025-10-22T15:45:49.806Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "AppDbContextModelSnapshot.cs",
-              "DocumentMoniker": "C:\\Users\\lab_services_student\\Desktop\\ST10313401_PROG6212_PART2\\ContractMonthlyClaimSystem\\Migrations\\AppDbContextModelSnapshot.cs",
-              "RelativeDocumentMoniker": "Migrations\\AppDbContextModelSnapshot.cs",
-              "ToolTip": "C:\\Users\\lab_services_student\\Desktop\\ST10313401_PROG6212_PART2\\ContractMonthlyClaimSystem\\Migrations\\AppDbContextModelSnapshot.cs",
-              "RelativeToolTip": "Migrations\\AppDbContextModelSnapshot.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-22T15:01:01.564Z"
             }
           ]
         }
