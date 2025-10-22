@@ -24,6 +24,17 @@ namespace ICClaimTests
             var description = claim.Description;
             Assert.Equal("This is a test note for the claim Description.", description);
         }
+        [Fact]
+        public void FileProperties_IsStoredCorrectly()
+        {
+            var claim = new Document();
+            claim.FileName = "invoice.pdf";
+            claim.ContentType = "pdf";
+
+            Assert.Equal("invoice.pdf", claim.FileName);
+            Assert.Equal("pdf", claim.ContentType);
+        }
+
 
 
     }
