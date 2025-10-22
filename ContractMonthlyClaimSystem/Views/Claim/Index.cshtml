@@ -9,7 +9,7 @@
 	<tbody>
 		@foreach (var c in Model)
 		{
-			var badge = c.Status == ContractMonthlyClaimSystem.Models.ClaimStatus.Rejected ? "bg-danger" : c.Status.ToString().StartsWith("Approved") ? "bg-success" : "bg-secondary";
+			var badge = String.Equals(c.Status, "Rejected") ? "bg-danger" : c.Status.ToString().StartsWith("Approved") ? "bg-success" : "bg-secondary";
 			<tr>
 				<td>@c.Id</td>
 				<td>@c.LecturerName</td>

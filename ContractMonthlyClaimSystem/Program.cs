@@ -1,4 +1,6 @@
 using ContractMonthlyClaimSystem.Data;
+using Microsoft.EntityFrameworkCore;
+using Oracle.EntityFrameworkCore;
 
 namespace ContractMonthlyClaimSystem
 {
@@ -9,7 +11,7 @@ namespace ContractMonthlyClaimSystem
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
+    options.UseOracle(builder.Configuration.GetConnectionString("Default")));
 
 
             // Add services to the container.

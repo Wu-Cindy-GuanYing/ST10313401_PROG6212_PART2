@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace ContractMonthlyClaimSystem.Models
 {
@@ -7,9 +7,22 @@ namespace ContractMonthlyClaimSystem.Models
     {
         public int Id { get; set; }
         public int ClaimId { get; set; }
-        [DataType(DataType.Date)] public DateTime Date { get; set; }
-        [Range(0.25, 24)] public decimal Hours { get; set; }
-        [Range(0, 10000)] public decimal Rate { get; set; }
-        [MaxLength(500)] public string Description { get; set; } = string.Empty;
+
+        public Claim? Claim { get; set; } // optional back-ref
+
+        [DataType(DataType.Date)]
+        // [Column(TypeName = "DATE")] // Oracle date-only
+        public DateTime Date { get; set; }
+
+        [Precision(9, 2)]
+        [Range(typeof(decimal), "0.25", "24")]
+        public decimal Hours { get; set; }
+
+        [Precision(18, 2)]
+        [Range(typeof(decimal), "0", "10000")]
+        public decimal Rate { get; set; }
+
+        [MaxLength(500)]
+        public string Description { get; set; } = string.Empty;
     }
 }

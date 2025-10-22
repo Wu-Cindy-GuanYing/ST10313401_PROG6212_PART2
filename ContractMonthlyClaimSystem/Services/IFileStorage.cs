@@ -32,7 +32,7 @@
             var full = Path.Combine(root, name);
             await using var s = File.Create(full);
             await file.CopyToAsync(s, ct);
-            var relative = Path.Combine("/uploads", subFolder, name).Replace("\", " / ");
+            var relative = Path.Combine("/uploads", subFolder, name).Replace("\\", " / ");
         return (relative, file.Length, file.ContentType);
         }
     }
