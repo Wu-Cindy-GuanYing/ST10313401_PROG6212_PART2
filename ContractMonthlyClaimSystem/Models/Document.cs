@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿// Models/Document.cs
+using System.ComponentModel.DataAnnotations;
 
 namespace ContractMonthlyClaimSystem.Models
 {
@@ -6,20 +7,19 @@ namespace ContractMonthlyClaimSystem.Models
     {
         public int Id { get; set; }
         public int ClaimId { get; set; }
-
-        public Claim? Claim { get; set; } // optional back-ref
+        public Claim? Claim { get; set; }
 
         [MaxLength(255)]
         public string FileName { get; set; } = string.Empty;
 
-        [MaxLength(512)]
-        public string FilePath { get; set; } = string.Empty; // relative to wwwroot
+        [MaxLength(255)]
+        public string OriginalFileName { get; set; } = string.Empty;
 
+        public byte[] FileContent { get; set; } = Array.Empty<byte>();
         public DateTime UploadedDate { get; set; } = DateTime.UtcNow;
 
         [MaxLength(128)]
         public string? ContentType { get; set; }
-
         public long SizeBytes { get; set; }
     }
 }

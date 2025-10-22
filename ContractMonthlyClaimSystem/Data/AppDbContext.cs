@@ -13,32 +13,128 @@ namespace ContractMonthlyClaimSystem.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // Map to the exact singular table names
+            modelBuilder.Entity<Claim>(entity =>
+            {
+                entity.ToTable("CLAIM");
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .ValueGeneratedOnAdd();
+
+                entity.Property(e => e.LecturerId)
+                    .HasColumnName("LECTURERID");
+
+                entity.Property(e => e.LecturerName)
+                    .HasColumnName("LECTURERNAME")
+                    .HasMaxLength(200);
+
+                entity.Property(e => e.Month)
+                    .HasColumnName("MONTH")
+                    .HasColumnType("DATE"); // Explicit DATE type for Oracle
+
+                entity.Property(e => e.TotalHours)
+                    .HasColumnName("TOTALHOURS")
+                    .HasPrecision(9, 2);
+
+                entity.Property(e => e.TotalAmount)
+                    .HasColumnName("TOTALAMOUNT")
+                    .HasPrecision(18, 2);
+
+                entity.Property(e => e.Status)
+                    .HasColumnName("STATUS")
+                    .HasConversion<int>();
+
+                entity.Property(e => e.SubmittedDate)
+                    .HasColumnName("SUBMITTEDDATE")
+                    .HasColumnType("DATE"); // Explicit DATE type for Oracle
+
+                entity.Property(e => e.ApprovedDate)
+                    .HasColumnName("APPROVEDDATE")
+                    .HasColumnType("DATE"); // Explicit DATE type for Oracle
+
+                // Relationships
+                entity.HasMany(c => c.ClaimItems)
+                    .WithOne(ci => ci.Claim)
+                    .HasForeignKey(ci => ci.ClaimId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasMany(c => c.Documents)
+                    .WithOne(d => d.Claim)
+                    .HasForeignKey(d => d.ClaimId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            // Map ClaimItem entity
+            modelBuilder.Entity<ClaimItem>(entity =>
+            {
+                entity.ToTable("CLAIMITEM");
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .ValueGeneratedOnAdd();
+
+                entity.Property(e => e.ClaimId)
+                    .HasColumnName("CLAIMID");
+
+                entity.Property(e => e.Date)
+                    .HasColumnName("CLAIMDATE")
+                    .HasColumnType("DATE"); // Explicit DATE type for Oracle
+
+                entity.Property(e => e.Hours)
+                    .HasColumnName("HOURS")
+                    .HasPrecision(9, 2);
+
+                entity.Property(e => e.Rate)
+                    .HasColumnName("RATE")
+                    .HasPrecision(18, 2);
+
+                entity.Property(e => e.Description)
+                    .HasColumnName("DESCRIPTION")
+                    .HasMaxLength(500);
+            });
+
+            // Map Document entity
+            modelBuilder.Entity<Document>(entity =>
+            {
+                entity.ToTable("DOCUMENT");
+                entity.HasKey(e => e.Id);
+
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .ValueGeneratedOnAdd();
+
+                entity.Property(e => e.ClaimId)
+                    .HasColumnName("CLAIMID");
+
+                entity.Property(e => e.FileName)
+                    .HasColumnName("FILENAME")
+                    .HasMaxLength(255);
+
+                entity.Property(e => e.OriginalFileName)
+                    .HasColumnName("ORIGINALFILENAME")
+                    .HasMaxLength(255);
+
+                // Explicit BLOB configuration for Oracle
+                entity.Property(e => e.FileContent)
+                    .HasColumnName("FILECONTENT")
+                    .HasColumnType("BLOB");
+
+                entity.Property(e => e.UploadedDate)
+                    .HasColumnName("UPLOADEDDATE")
+                    .HasColumnType("DATE"); // Explicit DATE type for Oracle
+
+                entity.Property(e => e.ContentType)
+                    .HasColumnName("CONTENTTYPE")
+                    .HasMaxLength(128);
+
+                entity.Property(e => e.SizeBytes)
+                    .HasColumnName("SIZEBYTES");
+            });
+
             base.OnModelCreating(modelBuilder);
-
-            modelBuilder.Entity<Claim>()
-                .HasMany(c => c.ClaimItems)
-                .WithOne(i => i.Claim)
-                .HasForeignKey(i => i.ClaimId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            modelBuilder.Entity<Claim>()
-                .HasMany(c => c.Documents)
-                .WithOne(d => d.Claim)
-                .HasForeignKey(d => d.ClaimId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            // Precision via fluent (alternative to attributes)
-            modelBuilder.Entity<Claim>().Property(p => p.TotalAmount).HasPrecision(18, 2);
-            modelBuilder.Entity<Claim>().Property(p => p.TotalHours).HasPrecision(9, 2);
-            modelBuilder.Entity<ClaimItem>().Property(p => p.Hours).HasPrecision(9, 2);
-            modelBuilder.Entity<ClaimItem>().Property(p => p.Rate).HasPrecision(18, 2);
-
-            // If you want DB-side defaults (Oracle example):
-            // modelBuilder.Entity<Claim>().Property(p => p.SubmittedDate)
-            //     .HasDefaultValueSql("SYSTIMESTAMP");
-            // modelBuilder.Entity<Document>().Property(p => p.UploadedDate)
-            //     .HasDefaultValueSql("SYSTIMESTAMP");
         }
-
     }
 }

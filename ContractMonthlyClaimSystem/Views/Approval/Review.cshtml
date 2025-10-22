@@ -1,27 +1,58 @@
 ﻿@model ContractMonthlyClaimSystem.Models.Claim
+@{
+    ViewData["Title"] = "Claim Details";
+}
+
 <h3>Claim #@Model.Id — @Model.LecturerName</h3>
 <p>Status: <strong>@Model.Status</strong></p>
+
 <table class="table">
-	<thead><tr><th>Date</th><th>Hours</th><th>Rate</th><th>Description</th></tr></thead>
-	<tbody>
-		@foreach (var i in Model.ClaimItems)
-		{
-			<tr><td>@i.Date.ToShortDateString()</td><td>@i.Hours</td><td>@i.Rate</td><td>@i.Description</td></tr>
-		}
-	</tbody>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Hours</th>
+            <th>Rate</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var i in Model.ClaimItems)
+        {
+            <tr>
+                <td>@i.Date.ToShortDateString()</td>
+                <td>@i.Hours</td>
+                <td>@i.Rate.ToString("C")</td>
+                <td>@i.Description</td>
+            </tr>
+        }
+    </tbody>
 </table>
-<div class="mb-2">
-	@foreach (var d in Model.Documents)
-	{
-		<a class="btn btn-sm btn-outline-secondary me-2" href="@d.FilePath" target="_blank">@d.FileName</a>
-	}
+
+@if (Model.Documents.Any())
+{
+    <div class="mb-3">
+        <h5>Supporting Documents:</h5>
+        @foreach (var d in Model.Documents)
+        {
+            <a class="btn btn-sm btn-outline-secondary me-2 mb-2"
+               href="@Url.Action("DownloadDocument", "Claim", new { id = d.Id })"
+               target="_blank"
+               download="@d.OriginalFileName">
+                @d.OriginalFileName
+            </a>
+        }
+    </div>
+}
+
+<div class="d-flex align-items-center gap-2">
+    <form asp-action="Approve" method="post" class="d-inline">
+        <input type="hidden" name="id" value="@Model.Id" />
+        <button class="btn btn-success">Approve</button>
+    </form>
+
+    <form asp-action="Reject" method="post" class="d-inline d-flex align-items-center gap-2">
+        <input type="hidden" name="id" value="@Model.Id" />
+        <input class="form-control" name="reason" placeholder="Rejection reason" style="width: 250px;" />
+        <button class="btn btn-danger">Reject</button>
+    </form>
 </div>
-<form asp-action="Approve" method="post" class="d-inline">
-	<input type="hidden" name="id" value="@Model.Id" />
-	<button class="btn btn-success">Approve</button>
-</form>
-<form asp-action="Reject" method="post" class="d-inline ms-2">
-	<input type="hidden" name="id" value="@Model.Id" />
-	<input class="form-control d-inline w-auto" name="reason" placeholder="Reason" />
-	<button class="btn btn-danger">Reject</button>
-</form>

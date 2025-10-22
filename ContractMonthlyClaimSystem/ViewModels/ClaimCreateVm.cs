@@ -1,21 +1,23 @@
 ﻿// ViewModels/ClaimCreateVm.cs
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Http;
 
 namespace ContractMonthlyClaimSystem.ViewModels
 {
     public class ClaimCreateVm
     {
-        [Required, Range(typeof(decimal), "0.25", "1000", ErrorMessage = "Hours must be between 0.25 and 1000.")]
+        [Display(Name = "Hours Worked")]
+        [Range(0.25, 500, ErrorMessage = "Hours must be between 0.25 and 500")]
         public decimal HoursWorked { get; set; }
 
-        [Required, Range(typeof(decimal), "0", "10000", ErrorMessage = "Rate must be between 0 and 10000.")]
+        [Display(Name = "Hourly Rate")]
+        [Range(0, 10000, ErrorMessage = "Rate must be between 0 and 10000")]
         public decimal HourlyRate { get; set; }
 
         [MaxLength(500)]
         public string? Notes { get; set; }
 
-        // bind the upload to this property
-        public IFormFile? Upload { get; set; }
+        [Display(Name = "Supporting Documents")]
+        public List<IFormFile>? Uploads { get; set; }
     }
 }

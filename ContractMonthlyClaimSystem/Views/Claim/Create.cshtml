@@ -21,9 +21,10 @@
             <span asp-validation-for="Notes" class="text-danger"></span>
         </div>
         <div class="mb-3">
-            <label asp-for="Upload" class="form-label">Supporting Document (PDF/DOCX/XLSX, max 10MB)</label>
-            <input asp-for="Upload" type="file" class="form-control" accept=".pdf,.docx,.xlsx" />
-            <span asp-validation-for="Upload" class="text-danger"></span>
+            <label asp-for="Uploads" class="form-label">Supporting Documents (PDF/DOCX/XLSX, max 10MB each)</label>
+            <input asp-for="Uploads" type="file" class="form-control" multiple accept=".pdf,.docx,.xlsx" />
+            <span asp-validation-for="Uploads" class="text-danger"></span>
+            <small class="form-text text-muted">Hold Ctrl to select multiple files</small>
         </div>
         <button class="btn btn-primary btn-lg w-100" type="submit">Submit</button>
     </form>

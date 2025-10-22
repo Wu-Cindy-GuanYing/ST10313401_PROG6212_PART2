@@ -61,6 +61,7 @@ wwwroot\lib\jquery\dist\jquery.slim.js
 wwwroot\lib\jquery\dist\jquery.slim.min.js
 wwwroot\lib\jquery\dist\jquery.slim.min.map
 wwwroot\lib\jquery\LICENSE.txt
+wwwroot\uploads\claim\BCAD-2-Group-2-V2-0a8698ab021449e8a6ca998e98b0bb43.pdf
 C:\Users\lab_services_student\Desktop\(MS Word file included)ST10313401_PROG6212_PART 1\ST10313401_PROG6212_PART 1\ST10313401_PROG6212_PART1\ContractMonthlyClaimSystem\wwwroot\lib\jquery\LICENSE.txt
 C:\Users\lab_services_student\Desktop\(MS Word file included)ST10313401_PROG6212_PART 1\ST10313401_PROG6212_PART 1\ST10313401_PROG6212_PART1\ContractMonthlyClaimSystem\wwwroot\lib\jquery\dist\jquery.slim.min.map
 C:\Users\lab_services_student\Desktop\(MS Word file included)ST10313401_PROG6212_PART 1\ST10313401_PROG6212_PART 1\ST10313401_PROG6212_PART1\ContractMonthlyClaimSystem\wwwroot\lib\jquery\dist\jquery.slim.min.js
