@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<ContractMonthlyClaimSystem.Models.Claim>
 @{
-    ViewData["Title"] = "Pending Claims";
+    ViewData["Title"] = "Pending Claims For Coordinator";
 }
 
 <h2>Pending Claims</h2>
@@ -59,6 +59,7 @@
             <div>
                 <form asp-action="Approve" method="post" class="d-inline">
                     <input type="hidden" name="id" value="@c.Id" />
+                    <input type="hidden" name="role" value="Coordinator" />
                     <button class="btn btn-success">Approve</button>
                 </form>
                 <form asp-action="Reject" method="post" class="d-inline ms-2">

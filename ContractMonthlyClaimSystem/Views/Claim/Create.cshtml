@@ -22,13 +22,44 @@
         </div>
         <div class="mb-3">
             <label asp-for="Uploads" class="form-label">Supporting Documents (PDF/DOCX/XLSX, max 10MB each)</label>
-            <input asp-for="Uploads" type="file" class="form-control" multiple accept=".pdf,.docx,.xlsx" />
+            <input asp-for="Uploads" type="file" class="form-control" multiple accept=".pdf,.docx,.xlsx" id="fileInput" />
             <span asp-validation-for="Uploads" class="text-danger"></span>
             <small class="form-text text-muted">Hold Ctrl to select multiple files</small>
         </div>
-        <button class="btn btn-primary btn-lg w-100" type="submit">Submit</button>
+
+        <!-- Simple Uploaded Documents Preview -->
+        <div class="mb-3" id="uploadPreview" style="display: none;">
+            <h5>Selected Documents:</h5>
+            <div id="fileList" class="alert alert-info">
+                <!-- Files will be listed here -->
+            </div>
+        </div>
+
+        <button class="btn btn-primary btn-lg w-100" type="submit">Submit Claim</button>
     </form>
 </div>
+
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function(e) {
+            const files = e.target.files;
+            const fileList = document.getElementById('fileList');
+            const uploadPreview = document.getElementById('uploadPreview');
+
+            if (files.length > 0) {
+                let fileNames = [];
+                for (let i = 0; i < files.length; i++) {
+                    const fileSize = (files[i].size / (1024 * 1024)).toFixed(2);
+                    fileNames.push(`${files[i].name} (${fileSize} MB)`);
+                }
+
+                fileList.innerHTML = fileNames.join('<br>');
+                uploadPreview.style.display = 'block';
+            } else {
+                uploadPreview.style.display = 'none';
+            }
+        });
+    </script>
 }

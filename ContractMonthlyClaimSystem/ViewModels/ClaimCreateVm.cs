@@ -1,5 +1,4 @@
-﻿// ViewModels/ClaimCreateVm.cs
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace ContractMonthlyClaimSystem.ViewModels

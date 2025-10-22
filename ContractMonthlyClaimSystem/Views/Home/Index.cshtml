@@ -29,9 +29,18 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Pending Approvals</h5>
-                    <p class="card-text">Review claims waiting for approval</p>
+                    <h5 class="card-title">Pending Coordinator Approvals</h5>
+                    <p class="card-text">Review claims waiting for coordinator approval</p>
                     <a href="@Url.Action("Index", "Approval")" class="btn btn-warning">Review Claims</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Pending Manager Approvals</h5>
+                    <p class="card-text">Review claims waiting for manager approval</p>
+                    <a href="@Url.Action("Review", "Approval")" class="btn btn-warning">Review Claims</a>
                 </div>
             </div>
         </div>

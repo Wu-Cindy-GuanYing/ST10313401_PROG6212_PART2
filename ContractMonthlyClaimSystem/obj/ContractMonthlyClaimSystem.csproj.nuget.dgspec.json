@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lab_services_student\\Desktop\\(MS Word file included)ST10313401_PROG6212_PART 1\\ST10313401_PROG6212_PART 1\\ST10313401_PROG6212_PART1\\ContractMonthlyClaimSystem\\ContractMonthlyClaimSystem.csproj": {}
+    "C:\\Users\\lab_services_student\\Desktop\\ST10313401_PROG6212_PART2\\ContractMonthlyClaimSystem\\ContractMonthlyClaimSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lab_services_student\\Desktop\\(MS Word file included)ST10313401_PROG6212_PART 1\\ST10313401_PROG6212_PART 1\\ST10313401_PROG6212_PART1\\ContractMonthlyClaimSystem\\ContractMonthlyClaimSystem.csproj": {
+    "C:\\Users\\lab_services_student\\Desktop\\ST10313401_PROG6212_PART2\\ContractMonthlyClaimSystem\\ContractMonthlyClaimSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lab_services_student\\Desktop\\(MS Word file included)ST10313401_PROG6212_PART 1\\ST10313401_PROG6212_PART 1\\ST10313401_PROG6212_PART1\\ContractMonthlyClaimSystem\\ContractMonthlyClaimSystem.csproj",
+        "projectUniqueName": "C:\\Users\\lab_services_student\\Desktop\\ST10313401_PROG6212_PART2\\ContractMonthlyClaimSystem\\ContractMonthlyClaimSystem.csproj",
         "projectName": "ContractMonthlyClaimSystem",
-        "projectPath": "C:\\Users\\lab_services_student\\Desktop\\(MS Word file included)ST10313401_PROG6212_PART 1\\ST10313401_PROG6212_PART 1\\ST10313401_PROG6212_PART1\\ContractMonthlyClaimSystem\\ContractMonthlyClaimSystem.csproj",
+        "projectPath": "C:\\Users\\lab_services_student\\Desktop\\ST10313401_PROG6212_PART2\\ContractMonthlyClaimSystem\\ContractMonthlyClaimSystem.csproj",
         "packagesPath": "C:\\Users\\lab_services_student\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lab_services_student\\Desktop\\(MS Word file included)ST10313401_PROG6212_PART 1\\ST10313401_PROG6212_PART 1\\ST10313401_PROG6212_PART1\\ContractMonthlyClaimSystem\\obj\\",
+        "outputPath": "C:\\Users\\lab_services_student\\Desktop\\ST10313401_PROG6212_PART2\\ContractMonthlyClaimSystem\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

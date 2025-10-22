@@ -19,6 +19,18 @@ namespace ContractMonthlyClaimSystem.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            var claims = await _db.Claims
+                .Include(c => c.ClaimItems)
+                .Include(c => c.Documents)
+                .OrderByDescending(c => c.SubmittedDate)
+                .ToListAsync();
+
+            return View(claims);
+        }
+
+        [HttpGet]
         public IActionResult Create()
         {
             var model = new ClaimCreateVm();
@@ -71,9 +83,8 @@ namespace ContractMonthlyClaimSystem.Controllers
             {
                 Console.WriteLine("Starting database operations...");
 
-                // --- Map to domain entities ---
                 var lecturerId = 0;
-                var lecturerName = User?.Identity?.Name ?? "Unknown";
+                var lecturerName = User?.Identity?.Name ?? "Cindy Wu";
                 Console.WriteLine($"Lecturer: {lecturerName} (ID: {lecturerId})");
 
                 var claim = new Claim
@@ -234,7 +245,6 @@ namespace ContractMonthlyClaimSystem.Controllers
             }
         }
 
-        // ADD THIS METHOD - It was missing
         private static string GenerateSafeFileName(string originalFileName)
         {
             var baseName = Path.GetFileNameWithoutExtension(originalFileName);
