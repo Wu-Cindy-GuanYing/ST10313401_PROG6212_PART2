@@ -15,6 +15,16 @@ namespace ICClaimTests
 
             Assert.Equal(13400, getResult);
         }
+        [Fact]
+        public void AdditionalNotes_Simulation()
+        {
+            var claim = new ClaimItem();
+            claim.Description = "This is a test note for the claim Description.";
+
+            var description = claim.Description;
+            Assert.Equal("This is a test note for the claim Description.", description);
+        }
+
 
     }
 }
