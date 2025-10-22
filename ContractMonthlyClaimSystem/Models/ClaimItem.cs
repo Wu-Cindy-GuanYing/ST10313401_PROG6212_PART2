@@ -23,5 +23,10 @@ namespace ContractMonthlyClaimSystem.Models
 
         [MaxLength(500)]
         public string Description { get; set; } = string.Empty;
+
+        public decimal CalculateTotalAmount()
+        {
+            return Hours * Rate;
+        }
     }
 }
